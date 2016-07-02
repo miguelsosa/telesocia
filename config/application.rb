@@ -31,6 +31,10 @@ module Telesocia
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Use pure sql format in schema.rb so it understands the
+    # postgresql sepcific code we are adding
+    config.active_record.schema_format = :sql
     
     # TODO: force https / ssl (need to set up certificate environment)
     # config.force_ssl = true
