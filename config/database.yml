@@ -86,4 +86,5 @@ production:
   <<: *default
   database: telesocia_production
   username: telesocia
-  password: <%= ENV['TELESOCIA_DATABASE_PASSWORD'] %>
+#  url: <%= ENV['DATABASE_URL'] %>
+#  password: <%= ENV['TELESOCIA_DATABASE_PASSWORD'] %>
