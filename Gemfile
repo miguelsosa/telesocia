@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 
 
+# Specify ruby version so Heroku doesn't complain.
+ruby '2.3.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.0'
 
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 0.15'
+# Use Puma as the app server
+gem 'puma', '~> 3.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -23,7 +26,7 @@ gem 'coffee-rails', '~> 4.2.1'
 gem 'jquery-rails', '~> 4.1.1'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.4.1'
+gem 'jbuilder', '~> 2.5'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -31,13 +34,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use Device for user management
+############################################
+# Use Devise for user management
 gem 'devise'
 
 # Manage bower assetts
@@ -46,11 +47,16 @@ gem 'bower-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 9.0.0', platform: :mri
+
+  # Use jasmine/teaspoon for javascript unit testing
+  gem 'teaspoon-jasmine'
+
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 3.1.1'
+  gem 'web-console'
 end
 
 group :test do
@@ -58,7 +64,14 @@ group :test do
 #      gem 'guard-minitest'
 #      gem 'minitest-reporters'
 # for rails 5.0 + rspec
-      gem 'rails-controller-testing'
+  gem 'rails-controller-testing'
+
+  # For end to end acceptace testing
+  gem 'poltergeist'
 end
 
+group :production do
+  # Use postgresql as the database for Active Record
+  gem 'pg', '~> 0.15'
+end
 
