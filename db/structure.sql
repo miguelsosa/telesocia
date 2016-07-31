@@ -61,11 +61,11 @@ CREATE TABLE schema_migrations (
 CREATE TABLE telesocis (
     id integer NOT NULL,
     phone character varying,
+    nickname character varying,
     first_name character varying,
     last_name character varying,
     company_name character varying,
     email character varying,
-    nickname character varying,
     url character varying,
     notes character varying,
     created_at timestamp without time zone NOT NULL,
