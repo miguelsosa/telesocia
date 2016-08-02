@@ -6,7 +6,7 @@
   <ol class="list-group">
     <% @telesocis.each do |telesoci| %>
     <li class='list-group-item'>
-      <h2>telesoci.phone</h2>
+      <h2><%= telesoci.phone %></h2>
       <h3><%= telesoci.get_nickname %></h3>
 
       <%- if telesoci.get_name %>
