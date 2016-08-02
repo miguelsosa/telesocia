@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root 'home#about'
 
+  # TODO: remove dashboard until / unless we have a particular need
+  # for it. We currently put the actions in the nav bar
   get 'dashboard' => 'dashboard#index'
 
   # Example of regular route:

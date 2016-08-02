@@ -2,6 +2,7 @@
   <header>
     <h1 class="h3">Telesocis</h1>
   </header>
+  <% if @telesocis.presence %>
   <ol class="list-group">
     <% @telesocis.each do |telesoci| %>
     <li class='list-group-item'>
@@ -19,4 +20,8 @@
     </li>
     <% end %>
   </ol>
+  <% else %>
+  <h2>No Telesocis found</h2>
+  <%= link_to "Add Telesoci", new_telesoci_path %>
+  <% end %>
 </section>

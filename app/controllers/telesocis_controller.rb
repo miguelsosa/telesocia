@@ -17,10 +17,10 @@ class TelesocisController < ApplicationController
 
   def create
     @telesoci = Telesoci.new(telesoci_params)
-
     if @telesoci.save
       redirect_to @telesoci
     else
+      # TODO: Fix error in new when validation fails - being called as POST
       render 'new'
     end
   end
@@ -36,6 +36,9 @@ class TelesocisController < ApplicationController
   end
 
   def destroy
+    @telesoci = Telesoci.find(params[:id])
+    @telesoci.destroy
+    redirect_to telesocis_path, notice: 'Telesoci was successfully destroyed.'
   end
 
   private
