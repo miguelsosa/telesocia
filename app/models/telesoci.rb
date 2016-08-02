@@ -3,7 +3,7 @@ GlobalPhone.db_path = Rails.root.join('db/global_phone.json')
 
 class Telesoci < ApplicationRecord
   validates :phone,  presence: true, uniqueness: true
-  validates_format_of :email, :with => Devise::email_regexp
+  validates_format_of :email, :with => Devise::email_regexp, allow_blank: true
   #validates_format_of :url, :with => URI::regexp
   validate :validate_url_is_http
   validate :validate_phone_looks_like_phone
