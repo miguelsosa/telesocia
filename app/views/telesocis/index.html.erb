@@ -1,0 +1,22 @@
+<section class="search-results">
+  <header>
+    <h1 class="h3">Telesocis</h1>
+  </header>
+  <ol class="list-group">
+    <% @telesocis.each do |telesoci| %>
+    <li class='list-group-item'>
+      <h2>telesoci.phone</h2>
+      <h3><%= telesoci.get_nickname %></h3>
+
+      <%- if telesoci.get_name %>
+      <h4><%= telesoci.get_name %></h4>
+      <% end -%>
+
+      <%- if telesoci.company_name.presence %>
+      <h4><%= telesoci.company_name %></h4>
+      <% end -%>
+      <%= link_to "Show", telesoci_path(telesoci) %>
+    </li>
+    <% end %>
+  </ol>
+</section>

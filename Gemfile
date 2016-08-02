@@ -44,6 +44,9 @@ gem 'devise'
 # Manage bower assetts
 gem 'bower-rails'
 
+# Validate Phone numbers
+gem 'global_phone', '~> 1.0.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 9.0.0', platform: :mri

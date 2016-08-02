@@ -8,7 +8,9 @@
     <%= f.email_field :email, autofocus: true, class: "form-control" %>
   </div>
 
-  <%= f.submit "Send me reset password instructions", class: "btn btn-primary btn-lg" %>
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions", class: "btn btn-primary btn-lg" %>
+  </div>
 <% end %>
 
 <%= render "devise/shared/links" %>

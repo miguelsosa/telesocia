@@ -1,0 +1,41 @@
+<div class="panel-group">
+  <article class="panel panel-info">
+    <div class="panel-heading">Telesoci for phone number: <%= @telesoci.phone -%></div>
+    <section class="panel-body">
+      <div class="title"><%= @telesoci.nickname if @telesoci.nickname %></div>
+      <p>
+	<strong>First Name:</strong>
+	<%= @telesoci.first_name %>
+      </p>
+
+      <p>
+	<strong>Last Name:</strong>
+	<%= @telesoci.last_name %>
+      </p>
+
+      <p>
+	<strong>Company Name:</strong>
+	<%= @telesoci.company_name %>
+      </p>
+
+      <p>
+	<strong>E-mail:</strong>
+	<%= @telesoci.email %>
+      </p>
+
+      <p>
+	<strong>URL:</strong>
+	<%= @telesoci.url %>
+      </p>
+
+      <p>
+	<strong>Notes:</strong>
+	<%= @telesoci.notes %>
+      </p>
+      <p><%= link_to 'Edit', edit_telesoci_path(@telesoci) %></p>
+      <p><%= link_to 'Delete', telesoci_path(@telesoci),
+	     method: :delete,
+	     data: { confirm: 'Are you sure you want to delete this Telesoci? This operation is irreversible?' } %></p>
+    </details>
+  </article>
+</div>
