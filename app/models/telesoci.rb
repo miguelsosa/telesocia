@@ -4,7 +4,6 @@ GlobalPhone.db_path = Rails.root.join('db/global_phone.json')
 class Telesoci < ApplicationRecord
   validates :phone,  presence: true, uniqueness: true
   validates_format_of :email, :with => Devise::email_regexp, allow_blank: true
-  #validates_format_of :url, :with => URI::regexp
   validate :validate_url_is_http
   validate :validate_phone_looks_like_phone
   before_save :convert_phone_to_globalphone
@@ -30,8 +29,14 @@ class Telesoci < ApplicationRecord
   private
   
   def validate_url_is_http
-    if url.presence && !(URI.parse(url).kind_of? URI::HTTP)
-      errors.add(:url, 'must be a valid http URL')
+    if url.presence
+      errmsg = 'must be a valid http URL'
+      begin
+        return true if (URI.parse(url).kind_of? URI::HTTP)
+      rescue Exception => e
+        errmsg += " - error: #{e.message}"
+      end
+      errors.add(:url, errmsg)
     end
   end
 
