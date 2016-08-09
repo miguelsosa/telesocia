@@ -20,14 +20,15 @@ RSpec.describe TelesocisController, type: :controller do
     @user = FactoryGirl.create(:user)
     sign_in @user
   end
-  
-  
+ 
   describe "GET 'show'" do
+    before(:each) do
+      setup
+    end
+
     describe "as html" do
       before(:each) do
-        setup
         @telesoci = create(:telesoci)
-
         get :show, params: { id: @telesoci.id }
       end
 
@@ -41,6 +42,28 @@ RSpec.describe TelesocisController, type: :controller do
       
       it "should return the correct telesoci when correct id is passed" do
         expect(assigns(:telesoci).id).to eq(@telesoci.id)
+      end
+    end
+
+    describe "as json" do
+      before(:each) do
+        @telesoci = create(:telesoci)
+
+        get :show, params: { format: :json, id: @telesoci.id }
+      end
+
+      it "should be successful" do
+        expect(response).to be_success
+      end
+      
+      it "should return the correct telesoci" do
+        body = JSON.parse(response.body)
+        expect(body["id"]).to eq(@telesoci.id)
+      end
+
+      it "should have the right phone" do
+        body = JSON.parse(response.body)
+        expect(body["phone"]).to eq(@telesoci.phone)
       end
     end
   end

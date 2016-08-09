@@ -1,10 +1,13 @@
 class TelesocisController < ApplicationController
+  respond_to :html, :json
+  
   def index
     @telesocis = Telesoci.all
   end
 
   def show
     @telesoci = Telesoci.find(params[:id])
+    respond_with(@telesoci)
   end
 
   def new
