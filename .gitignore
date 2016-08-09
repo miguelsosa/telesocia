@@ -14,3 +14,6 @@
 
 #Ignore emacs backup files
 *~
+
+# Ignore rspec helper files
+spec/examples.txt
