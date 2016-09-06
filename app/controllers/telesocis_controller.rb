@@ -39,7 +39,10 @@ class TelesocisController < ApplicationController
   end
 
   def destroy
+    puts "ON DESTROY - PARAMS IS: #{params.inspect}"
+
     @telesoci = Telesoci.find(params[:id])
+    puts "ON DESTROY - FOUND: #{@telesoci.inspect}}"
     @telesoci.destroy
     redirect_to telesocis_path, notice: 'Telesoci was successfully destroyed.'
   end
