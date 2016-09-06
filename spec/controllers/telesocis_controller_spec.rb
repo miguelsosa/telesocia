@@ -57,7 +57,7 @@ RSpec.describe TelesocisController, type: :controller do
       end
 
       it "PATCH 'update' succeeds" do
-        new_phone = "787-555-1234"
+        new_phone = "787-555-1235"
         modified_telesoci = Telesoci.first
         patch :update, params: { id: modified_telesoci.id, telesoci: { phone: new_phone } }
         expect(response).to redirect_to(assigns(:telesoci))
@@ -67,15 +67,14 @@ RSpec.describe TelesocisController, type: :controller do
       end
 
       it "PUT 'update' succeeds" do
-        new_phone = "787-555-1234"
+        new_phone = "787-555-1236"
         modified_telesoci = Telesoci.first
-        modified_telesoci.phone = new_phone
-        put :update, params: { :id => modified_telesoci.id, :telesoci => {:telesoci => modified_telesoci} }
+        put :update, params: { :id => modified_telesoci.id, :telesoci => {:telesoci => modified_telesoci}.merge({phone: new_phone})}
         
         expect(response).to redirect_to(assigns(:telesoci))
         
         # Get telesoci after update:
-        expect(Telesoci.first.phone).to eq(new_phone)
+        expect(Telesoci.find(modified_telesoci.id).phone).to eq(new_phone)
       end
 
       it "DELETE 'destroy' succeeds" do
