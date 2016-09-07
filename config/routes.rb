@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :telesocis
+  resources :users, only: [:index, :show]
 
   # Example resource route with options:
   #   resources :products do

@@ -1,0 +1,74 @@
+require 'rails_helper'
+
+RSpec.describe UsersController, type: :controller do
+  include Devise::Test::ControllerHelpers
+  
+  def setup
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    Faker::Config.locale = 'en-US'
+    Faker::Base.numerify('###-###-####')
+
+    # Create a few users
+    (1..3).each do 
+      FactoryGirl.create(:user)
+    end
+
+    @user = User.last
+    sign_in @user
+  end
+
+  def teardown
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    Faker::Config.locale = 'en-US'
+    Faker::Base.numerify('###-###-####')
+
+    # Create a few users
+    (1..3).each do 
+      FactoryGirl.create(:user)
+    end
+
+    @user = User.last
+    sign_in @user
+  end
+
+
+  describe "Should be able to list users" do
+    before(:all) do
+      setup
+    end
+    after(:all) do
+      teardown
+    end
+    
+    describe "when authenticated" do
+
+      # TODO: When roles and groups are added, a user can only see
+      # those users that are visible due to their role and/or groups,
+      # but until then we assuem everything is visible
+      
+      it "GET (user) 'index' succeeds and returns all users" do
+        get :index
+        expect(response).to be_success
+      end
+
+      it "Can GET 'show' a single user" do
+        get :show, params: {id: User.first }
+        expect(response).to be_success
+      end
+    end
+
+    
+    describe "when not authenticated" do
+      it "GET (user) 'index' requires authenticated user" do
+        get :index
+        expect(response).not_to be_success
+      end
+
+      it "GET (user) 'show' requires authenticated user" do
+        get :show, params: {id: User.first }
+        expect(response).not_to be_success
+      end
+
+    end
+  end
+end
