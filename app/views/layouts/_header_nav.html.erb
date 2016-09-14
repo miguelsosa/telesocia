@@ -20,6 +20,7 @@
       <!-- User account links -->
       <ul class="nav navbar-nav navbar-right">
 	<% if user_signed_in? -%>
+	<!-- TODO: change 'account settings' link to use a gravatar image of the user (need to add gravatar to user properties) -->
 	<li><%= link_to "Account Settings", edit_user_registration_path %></li>
 	<li><%= link_to "Dashboard", dashboard_path %></li>
 	<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>

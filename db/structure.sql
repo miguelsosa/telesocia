@@ -110,6 +110,7 @@ CREATE TABLE users (
     last_sign_in_ip inet,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
+    admin boolean DEFAULT false,
     CONSTRAINT email_must_look_like_email CHECK (((email)::text ~* '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}'::text))
 );
 
@@ -199,6 +200,6 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20160620165950'), ('20160702163720'), ('20160704215801');
+INSERT INTO schema_migrations (version) VALUES ('20160620165950'), ('20160702163720'), ('20160704215801'), ('20160914011728');
 
 
