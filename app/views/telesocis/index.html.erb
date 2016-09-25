@@ -5,8 +5,8 @@
   <% if @telesocis.presence %>
   <ol class="list-group">
     <% @telesocis.each do |telesoci| %>
-    <li class='list-group-item'>
-      <h2><%= telesoci.phone %></h2>
+    <div class='list-group-item telesoci-list' data-link="<%= telesoci_path(telesoci) %>">
+      <h2 class='tphone'><%= telesoci.phone %></h2>
       <h3><%= telesoci.get_nickname %></h3>
 
       <%- if telesoci.get_name %>
@@ -16,12 +16,12 @@
       <%- if telesoci.company_name.presence %>
       <h4><%= telesoci.company_name %></h4>
       <% end -%>
-      <%= link_to "Show", telesoci_path(telesoci) %>
-    </li>
+      <%= link_to "Show", telesoci_path(telesoci), remote: true %>
+    </div>
     <% end %>
   </ol>
   <% else %>
   <h2>No Telesocis found</h2>
-  <%= link_to "Add Telesoci", new_telesoci_path %>
+  <%= link_to "Add Telesoci", new_telesoci_path, remote: true %>
   <% end %>
 </section>

@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # TODO: index does not require authentication, other pages do
+  # All pages except home pages require authentication
   before_action :authenticate_user!
 end
