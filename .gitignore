@@ -17,3 +17,10 @@
 
 # Ignore rspec helper files
 spec/examples.txt
+
+# Ignore emacs backup files
+*~
+.*#.*#
+
+# Ignore mac temp files
+.DS_Store
