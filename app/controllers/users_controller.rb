@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   # TODO: Once we add groups, this should show only users with a particular visibility
 
   def index
-    @users = User.all
+    @users = current_user.visible_users
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user.show_user(params[:id])
     respond_with(@user)
   end
 

@@ -7,10 +7,10 @@
     <% @telesocis.each do |telesoci| %>
     <div class='list-group-item telesoci-list' data-link="<%= telesoci_path(telesoci) %>">
       <h2 class='tphone'><%= telesoci.phone %></h2>
-      <h3><%= telesoci.get_nickname %></h3>
+      <h3><%= get_nickname(telesoci) %></h3>
 
-      <%- if telesoci.get_name %>
-      <h4><%= telesoci.get_name %></h4>
+      <%- if (dn = display_name(telesoci)) %>
+      <h4><%= dn %></h4>
       <% end -%>
 
       <%- if telesoci.company_name.presence %>

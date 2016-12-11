@@ -52,7 +52,7 @@ RSpec.describe Telesoci, type: :model do
 
     it 'will not allow invalid email' do
       t = Telesoci.new({phone: valid_phones.first, email: 'not-an-email'})
-      expect(t.save).to be_falsey      
+      expect(t.save).to be_falsey
     end
   end
 

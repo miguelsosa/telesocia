@@ -10,7 +10,14 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password "password"
     password_confirmation "password"
+    admin false
+
+    # admin user inherits from user
+    factory :admin do
+      admin true
+    end
   end
+
 
   # Telesoci: 
   # Only phone is required
