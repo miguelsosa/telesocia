@@ -60,4 +60,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  # Catch all non existing pages
+  match '*path', via: :all, to: 'pages#handle_missing_page_error_404'
+  
 end
