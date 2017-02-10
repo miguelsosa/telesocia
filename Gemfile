@@ -53,6 +53,10 @@ gem 'dotenv-rails'
 gem 'rollbar'
 gem 'oj', '~> 2.12.14'
 
+# Simple redirection through rack - used to forward from
+# www.telesocia.com to heroku until I figure out what todo about ssl
+# in heroku for a free app.
+gem 'rack-host-redirect'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
