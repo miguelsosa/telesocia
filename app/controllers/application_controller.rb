@@ -5,4 +5,9 @@ class ApplicationController < ActionController::Base
 
   # All pages except home pages require authentication
   before_action :authenticate_user!
+  force_ssl if: :ssl_required?
+  private
+  def ssl_required?
+    request.host == 'telesocia-dev.herokuapp.com'
+  end
 end
