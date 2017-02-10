@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  match "https://www.telesocia.com/*path" => redirect("https:/telesocia-dev.herokuapp.com/%{path}"), via: [:get]
+  match "http://www.telesocia.com/*path"  => redirect("https:/telesocia-dev.herokuapp.com/%{path}"), via: [:get]
+  
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
