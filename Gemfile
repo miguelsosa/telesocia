@@ -47,6 +47,13 @@ gem 'bower-rails'
 # Validate Phone numbers
 gem 'global_phone', '~> 1.0.1'
 
+# Read environment from .env file
+gem 'dotenv-rails'
+
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 9.0.0', platform: :mri
