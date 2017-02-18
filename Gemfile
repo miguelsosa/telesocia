@@ -69,7 +69,10 @@ group :development, :test do
 
   gem "factory_girl_rails"
   gem "faker"
-  
+
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'rb-fsevent' # Growl notifications on MacOSX
 end
 
 group :development do

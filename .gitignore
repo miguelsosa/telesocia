@@ -24,3 +24,6 @@ spec/examples.txt
 
 # Ignore mac temp files
 .DS_Store
+
+# Don't add env variables
+.env

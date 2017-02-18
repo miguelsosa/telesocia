@@ -45,7 +45,7 @@ RSpec.describe Telesoci, type: :model do
       expect(t.save).to be_truthy
     end
 
-    it 'will allow an empyt email' do
+    it 'will allow an empty email' do
       t = Telesoci.new({phone: valid_phones.first, email: ''})
       expect(t.save).to be_truthy
     end
@@ -71,44 +71,6 @@ RSpec.describe Telesoci, type: :model do
     it 'does not allow an invalid looking https url' do
       t = Telesoci.new({phone: valid_phones.first, url: 'https://&*#$#'})
       expect(t.save).to be_falsey
-    end
-  end
-
-  describe 'get_nickname' do
-    it 'returns unknown if nickname is not set' do
-      t = Telesoci.new({phone: valid_phones.first})
-      expect(t.get_nickname).to eq('unknown')
-    end
-
-    it 'returns nickname if nickname is set' do
-      nick = 'my nickname'
-      t = Telesoci.new({phone: valid_phones.first, nickname: nick})
-      expect(t.get_nickname).to eq(nick)
-    end
-  end
-
-  describe 'get_name' do
-    let (:first) { 'first' }
-    let (:last)  { 'last' }
-    
-    it 'returns capitalized "last, first" if both first_name and last_name are set' do
-      t = Telesoci.new({phone: valid_phones.first, first_name: first, last_name: last})
-      expect(t.get_name).to eq("#{last.capitalize}, #{first.capitalize}")
-    end
-
-    it 'returns capitalized last if only last_name is set' do
-      t = Telesoci.new({phone: valid_phones.first, last_name: last})
-      expect(t.get_name).to eq("#{last.capitalize}")
-    end
-
-    it 'returns capitalized first if only first_name is set' do
-      t = Telesoci.new({phone: valid_phones.first, first_name: first})
-      expect(t.get_name).to eq("#{first.capitalize}")
-    end
-
-    it 'returns nil if neither first nor last is set' do
-      t = Telesoci.new({phone: valid_phones.first})
-      expect(t.get_name).to be_nil
     end
   end
 end

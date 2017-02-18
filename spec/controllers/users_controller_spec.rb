@@ -37,8 +37,9 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it "GET (user) 'show' requires authenticated user" do
-      get :show, params: {id: User.first }
+      get :show, params: {id: User.second }
       expect(response).not_to be_success
+      expect(assigns(:users)).to be_nil
     end
 
   end
@@ -52,11 +53,13 @@ RSpec.describe UsersController, type: :controller do
       it "GET (user) 'index' succeeds and returns all users" do
         get :index
         expect(response).to be_success
+        expect(assigns(:users)).to_not be_nil
       end
 
       it "Can GET 'show' a single user" do
-        get :show, params: {id: User.first }
+        get :show, params: {id: User.second }
         expect(response).to be_success
+        expect(assigns(:user)).to eq(User.second)
       end
     end
   end
@@ -70,13 +73,15 @@ RSpec.describe UsersController, type: :controller do
     # those users that are visible due to their role and/or groups,
     # but until then we assume everything is visible
     it "Can GET 'show' a themselves" do
-      get :show, params: {id: @user }
+      get :show, params: {id: @user}
       expect(response).to be_success
+      pending "@user != current_user. Need to debug this on the devise settings side."
+      expect(assigns(:user)).to eq(@user)
     end
 
     it "Can't list other users" do
       get :index
-      expect(response).not_to be_success
+      expect(assigns(:users)).to be_nil
     end
 
   end
